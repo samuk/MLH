@@ -217,7 +217,7 @@ class MLH(Farmware):
         if p['planted_at'] != None:
             out += '({:s})'.format(d2s(u2l(l2d(p['planted_at']))))
         if 'iwatering' in p['meta']:
-            iwatering = ast.literal_eval(p['meta']['iwatering']).items()
+            iwatering = list(ast.literal_eval(p['meta']['iwatering']).items())
             iwatering = sorted(iwatering, key=lambda elem: (s2d(elem[0])))[-3:]
             p['meta']['iwatering'] = {key: value for (key, value) in iwatering}
             p['meta']['iwatering'] = str(p['meta']['iwatering'])
