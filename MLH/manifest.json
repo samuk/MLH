@@ -4,7 +4,7 @@
  "author": "etcipnja",
  "description": "Mother's little helper to automate routine operations on multiple plants at once",
  "version": "3.7.0",
- "min_os_version_major": 6,
+ "min_os_version_major":7,
  "url": "https://raw.githubusercontent.com/samuk/MLH/master/MLH/manifest.json",
  "zip": "https://github.com/samuk/MLH/archive/master.zip",
   "executable": "python",
