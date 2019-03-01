@@ -31,7 +31,7 @@ class Weather(object):
         return "Weather()"
     # ------------------------------------------------------------------------------------------------------------------
     def __str__(self):
-        l=self.weather.items()
+        l=list(self.weather.items())
         l.sort(key=lambda x: s2d(x[0]),reverse=True)
         ret=""
         for r in l:
@@ -55,7 +55,7 @@ class Weather(object):
             self.weather = ast.literal_eval(weather_station['meta']['current_weather'])
             if not isinstance(self.weather, dict): raise ValueError
             # leave only last 7 days
-            self.weather = {k: v for (k, v) in self.weather.items() if
+            self.weather = {k: v for (k, v) in list(self.weather.items()) if
                             datetime.date.today() - s2d(k).date() < datetime.timedelta(days=7)}
 
         except:  pass
@@ -114,9 +114,9 @@ class Farmware(object):
         data = {'user': {'email': login, 'password': password}}
         response=self.post('tokens',data)
 
-        print("Device id: {}".format(response['token']['unencoded']['bot']))
-        print("MQTT Host: {}".format(response['token']['unencoded']['mqtt']))
-        print("API_TOKEN: {}".format(response['token']['encoded']))
+        print(("Device id: {}".format(response['token']['unencoded']['bot'])))
+        print(("MQTT Host: {}".format(response['token']['unencoded']['mqtt'])))
+        print(("API_TOKEN: {}".format(response['token']['encoded'])))
         return response
     # ------------------------------------------------------------------------------------------------------------------
     def load_config(self):
@@ -302,5 +302,3 @@ class Farmware(object):
         dx=math.fabs(p1['x']-p2['x'])
         dy = math.fabs(p1['y'] - p2['y'])
         return math.hypot(dx,dy)
-
-
